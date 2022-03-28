@@ -1,0 +1,27 @@
+id: supacars_acarsparser
+label: ACARSparser
+category: '[supacars]'
+
+templates:
+  imports: import supacars
+  make: supacars.acarsparser(${db_request_mode}, ${api_key})
+
+parameters:
+- id: db_request_mode
+  label: Database Request Mode
+  dtype: bool
+- id: api_key
+  label: API Key
+  dtype: string
+
+inputs:
+- domain: message
+  id: in
+  optional: true
+
+outputs:
+- domain: message
+  id: parsed_output
+  optional: true
+
+file_format: 1

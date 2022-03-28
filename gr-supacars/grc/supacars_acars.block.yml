@@ -1,0 +1,32 @@
+id: supacars_acars
+label: ACARSdecoder
+category: '[supacars]'
+
+templates:
+  imports: import supacars
+  make: supacars.acars(${samp_rate}, ${corr_thres})
+  callbacks: 
+    - set_corr_thres(${corr_thres})
+
+parameters:
+- id: samp_rate
+  label: Sample rate
+  dtype: float
+- id: corr_thres
+  label: Correlation threshold
+  dtype: float
+
+inputs:
+- label: in
+  domain: stream
+  dtype: float
+
+sources:
+- domain: message
+  id: raw_output
+  optional: true
+- domain: message
+  id: parser_output
+  optional: true
+
+file_format: 1
