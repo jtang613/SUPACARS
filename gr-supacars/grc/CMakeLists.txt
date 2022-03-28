@@ -19,5 +19,9 @@
 install(FILES
     supacars_acarsdecoder.xml
     supacars_acars.xml
-    supacars_acarsparser.xml DESTINATION share/gnuradio/grc/blocks
+    supacars_acarsparser.xml 
+    supacars_acarsdecoder.block.yml
+    supacars_acars.block.yml
+    supacars_acarsparser.block.yml 
+    DESTINATION share/gnuradio/grc/blocks
 )

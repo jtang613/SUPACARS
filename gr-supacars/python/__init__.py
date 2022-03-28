@@ -33,7 +33,7 @@ except ImportError:
 # import any pure python here
 
 
-from acarsdecoder import acarsdecoder
-from acars import acars
-from acarsparser import acarsparser
+from supacars.acarsdecoder import acarsdecoder
+from supacars.acars import acars
+from supacars.acarsparser import acarsparser
 #

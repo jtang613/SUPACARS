@@ -28,8 +28,8 @@ from gnuradio import gr
 import types
 from time import gmtime, strftime
 import wget
-import Tkinter
-import Image, ImageTk
+import tkinter
+from PIL import Image, ImageTk
 import os
 
 

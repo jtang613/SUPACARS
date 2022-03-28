@@ -487,7 +487,4 @@ class acars(gr.sync_block):
                 self.state = State.SCAN
                 return
 
-
-
-
         return 0
