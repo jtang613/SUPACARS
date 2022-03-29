@@ -193,7 +193,7 @@ class acars(gr.sync_block):
         self.fs = samp_rate
         self.init_constants()
         self.message_port_register_out(pmt.intern("raw_output"))
-        self.message_port_register_out(pmt.intern("parser_output"))
+        self.message_port_register_out(pmt.intern("parsed_output"))
         self.queue = []
         self.state = State.SCAN
         self.init_states()
@@ -261,7 +261,7 @@ class acars(gr.sync_block):
         vec = pmt.to_pmt(nvec)
         self.message_port_pub(pmt.intern("raw_output"), pmt.cons(pmt.PMT_NIL, vec))
         
-    def parser_output(self, mat_frame, parity_ok = True, crc_ok = True):
+    def parsed_output(self, mat_frame, parity_ok = True, crc_ok = True):
 
         # Reshaping the mat_frame into a simple row vector and convert the vector to a string
         size_mat_frame = mat_frame.shape
@@ -283,7 +283,7 @@ class acars(gr.sync_block):
         dic = pmt.dict_add(dic,key_mat,val_mat)
         
         # Sending the dictionnary to the acarsparser block
-        self.message_port_pub(pmt.intern("parser_output"), pmt.cons(pmt.PMT_NIL, dic))
+        self.message_port_pub(pmt.intern("parsed_output"), pmt.cons(pmt.PMT_NIL, dic))
         
 
     def parity_check(self, binary_vect):
@@ -480,7 +480,7 @@ class acars(gr.sync_block):
         if(self.state == State.CRC_2):
             if(numpy.array_equal(mat_block[0,:],self.BCS)):
                 self.raw_output(self.current_message, True, True)
-                self.parser_output(self.current_message, True, True) #  Sending the frame to the acarsparser in an asynchronous msg                
+                self.parsed_output(self.current_message, True, True) #  Sending the frame to the acarsparser in an asynchronous msg                
                 self.state = State.SCAN
                 return
             else:

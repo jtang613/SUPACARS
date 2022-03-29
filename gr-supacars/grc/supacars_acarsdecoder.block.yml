@@ -23,10 +23,10 @@ inputs:
 
 outputs:
 - domain: message
-  id: raw_out
+  id: raw_output
   optional: true
 - domain: message
-  id: parsed_out
+  id: parsed_output
   optional: true
 
 file_format: 1

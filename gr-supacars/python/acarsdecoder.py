@@ -383,7 +383,7 @@ class acarsdecoder(gr.sync_block):
                                     s = self.binToACARS(list_message)
                                     nvec = numpy.fromstring(s, dtype=numpy.uint8, count=len(s))
                                     vec = pmt.to_pmt(nvec)
-                                    self.message_port_pub(pmt.intern("raw_out"), pmt.cons(pmt.PMT_NIL, vec))
+                                    self.message_port_pub(pmt.intern("raw_output"), pmt.cons(pmt.PMT_NIL, vec))
                                     
                                     self.state = State.SCAN
                                 else:
